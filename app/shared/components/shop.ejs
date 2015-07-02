@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Meego</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="public/css/shop.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react-with-addons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/JSXTransformer.js"></script>
+    </head>
+
+    <body>
+
+        <header>
+          <% include ../views/partials/menu %>
+        </header>
+
+        <div class="featuring jumbotron"><img src="/public/assets/images/<%- restaurant_data.image %>" class="featuring_logo"/></div>
+    
+        <div class="container">
+            <div class="restaurant_description">
+                <h2 style="color:#93573D">Cafe Habitu</h2><span style="color:#FC571F">at Elements Mall</span><br/>
+                <span style="color:#FC571F">Shop 1001, 1 Austin Road West, Kowloon Station<br/>
+                Tel: 2196-8466 </span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="products-list" class="products-list"></div>
+
+                    <div class="product__category">
+                        <span class="category_title" id="complementary">Complementary</span>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="product__item">
+                                    <div class="thumbnail">
+                                        <img class="product__photo" src="public/assets/products/cake.jpg" />
+                                        <div class="caption clearfix">
+                                            <div class="product__name-wrapper">
+                                                <h3>Quintessential Cake</h3>
+                                                <h3>精選蛋糕</h3>
+                                            </div>
+                                            <div class="product__description">FREE with any Meego purchases</div>
+                                            <div class="product__price-discounted">FREE!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="color:#FC571F;">Enjoy your lunch!</h3>
+                </div>
+            </div>
+        </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Your Cart</h4>
+          </div>
+          <div class="modal-body">
+              <div class="cartWrapper">
+          <div id="form" class="form">
+
+          </div>
+
+          <div style="color:red;">
+          <br/>
+          *Offer only applicable to Habitu at elements<br/>
+          **Complimentary Quintessential Cake for any purchases
+          </div>
+
+          <h3>Purchases</h3>
+
+          <div id="cart" class="cart">
+            <!-- rendered by react js -->
+          </div>
+          </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works modal -->
+    <div class="modal fade" id="HowItWorksModal" tabindex="-1" role="dialog" aria-labelledby="HowItWorksModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="HowItWorksModalLabel">How It Works</h4>
+          </div>
+          <div class="modal-body">
+                <h4>1. Pick your favorite food and add to cart.</h4>
+                <h4>2. Checkout and Pay. You will receive an email confirmation.</h4>
+                <h4>3. Show your confirmation number to a staff at your restaurant to collect your order.</h4>
+                <h4>4. Enjoy your meal!</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <footer>
+            <div class="footer">Meego 2015</div>
+
+        </footer>
+
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="public/js/libs/jquery.ba-tinypubsub.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+        <script type="text/jsx" src="public/js/components/shop.js"></script>
+
+        <script type="text/jsx" src="public/js/components/product.js"></script>
+        <script type="text/jsx" src="public/js/components/products-list.js"></script>
+        <script type="text/jsx" src="public/js/components/product-categories.js"></script>
+
+        <script type="text/jsx" src="public/js/components/cart.js"></script>
+        <script type="text/jsx" src="public/js/components/form.js"></script>
+
+        <script type="text/jsx">
+          React.render(<ProductCategories data={<%- JSON.stringify(restaurant_data.categories) %>} />, document.getElementById('products-list'));
+          React.render(<Cart />, document.getElementById('cart'));
+          React.render(<Form />, document.getElementById('form'));
+        </script>
+    </body>
+</html>
