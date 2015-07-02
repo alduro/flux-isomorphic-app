@@ -1,5 +1,4 @@
-# Meego
-Best Restaurant in Town.
+# Flux - Sample App
 
 ##For Running in Development mode
 
